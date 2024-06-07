@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:inner_drawer/inner_drawer.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -11,14 +12,15 @@ void main() {
   const tWidgetSize = Size(720.0, 1280.0);
 
   group('Demo end-to-end test', () {
-    setUp(() {
-      WidgetsBinding.instance.renderView.configuration = TestViewConfiguration(
-        size: tWidgetSize,
-      );
-    });
     testWidgets(
         'Should show left child when swiped from left to the middle of screen',
         (tester) async {
+      final RenderView renderView = WidgetsBinding.instance.renderViews.single;
+      renderView.configuration = TestViewConfiguration.fromView(
+        size: tWidgetSize,
+        view: tester.view,
+      );
+
       runApp(
         const MaterialApp(
           home: InnerDrawer(
