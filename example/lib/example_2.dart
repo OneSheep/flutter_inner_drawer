@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inner_drawer/inner_drawer.dart';
 
 class ExampleTwo extends StatefulWidget {
-  const ExampleTwo({Key key}) : super(key: key);
+  const ExampleTwo({Key? key}) : super(key: key);
 
   @override
   ExampleTwoState createState() => ExampleTwoState();
@@ -53,7 +53,7 @@ class ExampleTwoState extends State<ExampleTwo> {
       leftAnimationType: _animationType,
       rightAnimationType: _animationType,
       leftChild: Material(
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.surface,
           child: const Center(
             child: SizedBox(
               child: Text(
@@ -63,7 +63,7 @@ class ExampleTwoState extends State<ExampleTwo> {
             ),
           )),
       rightChild: Material(
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.surface,
           child: const Center(
             child: SizedBox(
               child: Text(
@@ -200,7 +200,7 @@ class ExampleTwoState extends State<ExampleTwo> {
                           data: Theme.of(context).sliderTheme.copyWith(
                                 valueIndicatorTextStyle: Theme.of(context)
                                     .textTheme
-                                    .bodyText2
+                                    .bodyMedium!
                                     .copyWith(color: Colors.white),
                               ),
                           child: Slider(
@@ -289,7 +289,7 @@ class ExampleTwoState extends State<ExampleTwo> {
                           data: Theme.of(context).sliderTheme.copyWith(
                                 valueIndicatorTextStyle: Theme.of(context)
                                     .textTheme
-                                    .bodyText2
+                                    .bodyMedium!
                                     .copyWith(color: Colors.white),
                               ),
                           child: Slider(
@@ -331,7 +331,7 @@ class ExampleTwoState extends State<ExampleTwo> {
                           data: Theme.of(context).sliderTheme.copyWith(
                                 valueIndicatorTextStyle: Theme.of(context)
                                     .textTheme
-                                    .bodyText2
+                                    .bodyMedium!
                                     .copyWith(color: Colors.white),
                               ),
                           child: Slider(
@@ -370,7 +370,7 @@ class ExampleTwoState extends State<ExampleTwo> {
                           data: Theme.of(context).sliderTheme.copyWith(
                                 valueIndicatorTextStyle: Theme.of(context)
                                     .textTheme
-                                    .bodyText2
+                                    .bodyMedium!
                                     .copyWith(color: Colors.white),
                               ),
                           child: Slider(

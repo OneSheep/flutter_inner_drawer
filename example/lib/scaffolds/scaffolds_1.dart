@@ -7,7 +7,8 @@ import 'package:provider/provider.dart';
 class ScaffoldDrawer extends StatelessWidget {
   final GlobalKey<InnerDrawerState> innerDrawerKey;
 
-  const ScaffoldDrawer({Key key, this.innerDrawerKey}) : super(key: key);
+  const ScaffoldDrawer({Key? key, required this.innerDrawerKey})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +25,12 @@ class ScaffoldDrawer extends StatelessWidget {
             colors: [
               ColorTween(
                 begin: Colors.blueAccent,
-                end: Colors.blueGrey[400].withRed(100),
-              ).lerp(drawer.swipeOffset),
+                end: Colors.blueGrey.shade400.withRed(100),
+              ).lerp(drawer.swipeOffset)!,
               ColorTween(
                 begin: Colors.green,
-                end: Colors.blueGrey[800].withGreen(80),
-              ).lerp(drawer.swipeOffset),
+                end: Colors.blueGrey.shade800.withGreen(80),
+              ).lerp(drawer.swipeOffset)!,
             ],
           ),
         ),
@@ -188,7 +189,7 @@ class ScaffoldDrawer extends StatelessWidget {
                             data: Theme.of(context).sliderTheme.copyWith(
                                   valueIndicatorTextStyle: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
+                                      .bodyMedium!
                                       .copyWith(color: Colors.white),
                                 ),
                             child: Slider(
@@ -258,7 +259,7 @@ class ScaffoldDrawer extends StatelessWidget {
                     onPressed: () {
                       // direction is optional
                       // if not set, the last direction will be used
-                      innerDrawerKey.currentState.toggle();
+                      innerDrawerKey.currentState?.toggle();
                     },
                   ),
                 ],

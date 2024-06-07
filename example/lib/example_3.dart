@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inner_drawer/inner_drawer.dart';
 
 class ExampleThree extends StatefulWidget {
-  const ExampleThree({Key key}) : super(key: key);
+  const ExampleThree({Key? key}) : super(key: key);
 
   @override
   ExampleThreeState createState() => ExampleThreeState();
@@ -23,15 +23,15 @@ class ExampleThreeState extends State<ExampleThree> {
 
   @override
   void dispose() {
-    myFocusNode.dispose();
-    myFocusNode2.dispose();
+    myFocusNode?.dispose();
+    myFocusNode2?.dispose();
     super.dispose();
   }
 
   Color currentColor = Colors.black54;
 
-  FocusNode myFocusNode;
-  FocusNode myFocusNode2;
+  FocusNode? myFocusNode;
+  FocusNode? myFocusNode2;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class ExampleThreeState extends State<ExampleThree> {
       swipeChild: true,
       leftAnimationType: InnerDrawerAnimation.quadratic,
       leftChild: Material(
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.surface,
           child: Center(
             child: SizedBox(
                 child: Column(
@@ -74,8 +74,8 @@ class ExampleThreeState extends State<ExampleThree> {
             end: Alignment.bottomLeft,
             //stops: [0.1, 0.5,0.5, 0.7, 0.9],
             colors: [
-              Colors.green[200],
-              Colors.green[500],
+              Colors.green.shade200,
+              Colors.green.shade500,
             ],
           ),
         ),
@@ -101,9 +101,9 @@ class ExampleThreeState extends State<ExampleThree> {
       innerDrawerCallback: (a) {
         print(a);
         if (a) {
-          myFocusNode2.requestFocus();
+          myFocusNode2?.requestFocus();
         } else {
-          myFocusNode.requestFocus();
+          myFocusNode?.requestFocus();
         }
       },
     );

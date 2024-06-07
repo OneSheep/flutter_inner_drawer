@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LeftChild extends StatelessWidget {
-  const LeftChild({Key key}) : super(key: key);
+  const LeftChild({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +25,12 @@ class LeftChild extends StatelessWidget {
               colors: [
                 ColorTween(
                   begin: Colors.blueAccent,
-                  end: Colors.blueGrey[400].withRed(100),
-                ).lerp(swipeOffset),
+                  end: Colors.blueGrey.shade400.withRed(100),
+                ).lerp(swipeOffset)!,
                 ColorTween(
                   begin: Colors.green,
-                  end: Colors.blueGrey[800].withGreen(80),
-                ).lerp(swipeOffset),
+                  end: Colors.blueGrey.shade800.withGreen(80),
+                ).lerp(swipeOffset)!,
               ],
             ),
           ),
@@ -127,9 +127,9 @@ class LeftChild extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                   width: double.maxFinite,
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const <Widget>[
+                    children: <Widget>[
                       Icon(
                         Icons.all_out,
                         size: 18,
@@ -160,8 +160,8 @@ class LeftChild extends StatelessWidget {
                   ),
                 ),
               )
-            : null,
-      ].where((a) => a != null).toList(),
+            : const SizedBox(),
+      ].toList(),
     ));
   }
 }

@@ -14,7 +14,7 @@ void main() => runApp(ChangeNotifierProvider(
     ));
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +22,21 @@ class MyApp extends StatelessWidget {
       title: 'Inner Drawer',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
-        backgroundColor: Colors.white,
       ),
-      home: InnerDrawer(
-        scaffold: Container(),
-        leftChild: const SizedBox(
-          child: Text('Child'),
-        ),
-        rightChild: const SizedBox(
-          child: Text('Child'),
+      home: const Scaffold(
+        body: SafeArea(
+          child: InnerDrawer(
+            onTapClose: true,
+            scaffold: Scaffold(
+              body: Text('Scaffold'),
+            ),
+            leftChild: SizedBox(
+              child: Text('Child'),
+            ),
+            rightChild: SizedBox(
+              child: Text('Child'),
+            ),
+          ),
         ),
       ),
     );
@@ -40,7 +46,7 @@ class MyApp extends StatelessWidget {
 enum Example { one, two, three }
 
 class MainApp extends StatefulWidget {
-  const MainApp({Key key}) : super(key: key);
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   MainAppState createState() => MainAppState();
@@ -48,10 +54,10 @@ class MainApp extends StatefulWidget {
 
 class MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
   bool isOpened = false;
-  AnimationController _animationController;
-  Animation<Color> _buttonColor;
-  Animation<double> _animateIcon;
-  Animation<double> _translateButton;
+  late final AnimationController _animationController;
+  late final Animation<Color?> _buttonColor;
+  late final Animation<double> _animateIcon;
+  late final Animation<double> _translateButton;
   final Curve _curve = Curves.easeOut;
   final double _fabHeight = 56.0;
 
@@ -77,14 +83,17 @@ class MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
     _buttonColor = ColorTween(
       begin: Colors.black45,
       end: Colors.red,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: const Interval(
-        0.00,
-        1.00,
-        curve: Curves.linear,
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: const Interval(
+          0.00,
+          1.00,
+          curve: Curves.linear,
+        ),
       ),
-    ));
+    );
+
     _translateButton = Tween<double>(
       begin: _fabHeight,
       end: -14.0,
@@ -160,19 +169,19 @@ class MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
     }
   }
 
-  Widget _item({String title, Example example}) {
+  Widget _item({required String title, required Example example}) {
     //print(((_translateButton.value-66)/60).abs());
     double val = ((_translateButton.value - 56) / 60).abs();
     Color color;
     switch (example) {
       case Example.one:
-        color = Colors.green[300];
+        color = Colors.green.shade300;
         break;
       case Example.two:
-        color = Colors.orange[300];
+        color = Colors.red.shade300;
         break;
       default:
-        color = Colors.blue[300];
+        color = Colors.blue.shade300;
     }
 
     return Opacity(
