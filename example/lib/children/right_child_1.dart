@@ -5,7 +5,7 @@ import '../env.dart';
 class RightChild extends StatelessWidget {
   final bool _position = true;
   final GlobalKey<InnerDrawerState> innerDrawerKey;
-  const RightChild({this.innerDrawerKey, Key key}) : super(key: key);
+  const RightChild({required this.innerDrawerKey, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,8 @@ class RightChild extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                    left: BorderSide(width: 1, color: Colors.grey[200]),
-                    right: BorderSide(width: 1, color: Colors.grey[200])),
+                    left: BorderSide(width: 1, color: Colors.grey.shade200),
+                    right: BorderSide(width: 1, color: Colors.grey.shade200)),
               ),
               child: Stack(
                 children: <Widget>[
@@ -32,8 +32,8 @@ class RightChild extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Row(
-                                children: const <Widget>[
+                              const Row(
+                                children: <Widget>[
                                   SizedBox(
                                     width: 15,
                                     height: 15,
@@ -62,7 +62,7 @@ class RightChild extends StatelessWidget {
                                     size: 18,
                                   ),
                                   onTap: () {
-                                    innerDrawerKey.currentState.toggle();
+                                    innerDrawerKey.currentState?.toggle();
                                   },
                                 ),
                               ),
@@ -110,11 +110,11 @@ class RightChild extends StatelessWidget {
                             //color: Colors.grey,
                             border: Border(
                                 top: BorderSide(
-                          color: Colors.grey[300],
+                          color: Colors.grey.shade300,
                         ))),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: const <Widget>[
+                          children: <Widget>[
                             Icon(
                               Icons.settings,
                               size: 18,

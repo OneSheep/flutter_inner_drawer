@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:inner_drawer/inner_drawer.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   const tWidgetSize = Size(720.0, 1280.0);
   group('InnerDrawer', () {
-    setUp(() {
-      WidgetsBinding.instance.renderView.configuration = TestViewConfiguration(
-        size: tWidgetSize,
-      );
-    });
-
     testWidgets(
       'Should throw assertion error if both left and right child is null',
       (
         WidgetTester tester,
       ) async {
+        final RenderView renderView =
+            WidgetsBinding.instance.renderViews.single;
+        renderView.configuration = TestViewConfiguration.fromView(
+          size: tWidgetSize,
+          view: tester.view,
+        );
+
         expect(() {
           InnerDrawer(
             scaffold: const Scaffold(),
@@ -29,6 +31,13 @@ void main() {
       (
         WidgetTester tester,
       ) async {
+        final RenderView renderView =
+            WidgetsBinding.instance.renderViews.single;
+        renderView.configuration = TestViewConfiguration.fromView(
+          size: tWidgetSize,
+          view: tester.view,
+        );
+
         await tester.pumpWidget(
           const MaterialApp(
             home: InnerDrawer(
@@ -55,6 +64,13 @@ void main() {
       (
         WidgetTester tester,
       ) async {
+        final RenderView renderView =
+            WidgetsBinding.instance.renderViews.single;
+        renderView.configuration = TestViewConfiguration.fromView(
+          size: tWidgetSize,
+          view: tester.view,
+        );
+
         await tester.pumpWidget(
           const MaterialApp(
             home: InnerDrawer(
@@ -82,6 +98,13 @@ void main() {
       (
         WidgetTester tester,
       ) async {
+        final RenderView renderView =
+            WidgetsBinding.instance.renderViews.single;
+        renderView.configuration = TestViewConfiguration.fromView(
+          size: tWidgetSize,
+          view: tester.view,
+        );
+
         await tester.pumpWidget(
           const MaterialApp(
             home: InnerDrawer(
@@ -114,6 +137,13 @@ void main() {
       (
         WidgetTester tester,
       ) async {
+        final RenderView renderView =
+            WidgetsBinding.instance.renderViews.single;
+        renderView.configuration = TestViewConfiguration.fromView(
+          size: tWidgetSize,
+          view: tester.view,
+        );
+
         await tester.pumpWidget(
           const MaterialApp(
             home: InnerDrawer(
@@ -147,6 +177,13 @@ void main() {
       (
         WidgetTester tester,
       ) async {
+        final RenderView renderView =
+            WidgetsBinding.instance.renderViews.single;
+        renderView.configuration = TestViewConfiguration.fromView(
+          size: tWidgetSize,
+          view: tester.view,
+        );
+
         await tester.pumpWidget(
           const MaterialApp(
             home: InnerDrawer(
@@ -179,6 +216,13 @@ void main() {
       (
         WidgetTester tester,
       ) async {
+        final RenderView renderView =
+            WidgetsBinding.instance.renderViews.single;
+        renderView.configuration = TestViewConfiguration.fromView(
+          size: tWidgetSize,
+          view: tester.view,
+        );
+
         await tester.pumpWidget(
           const MaterialApp(
             home: InnerDrawer(

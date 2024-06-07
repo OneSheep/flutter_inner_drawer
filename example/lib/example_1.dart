@@ -13,9 +13,9 @@ class ExampleOne extends StatelessWidget {
 
   final Color pickerColor = const Color(0xff443a49);
   final Color currentColor = Colors.black54;
-  final ValueChanged<Color> onColorChanged;
+  final ValueChanged<Color>? onColorChanged;
 
-  ExampleOne({Key key, this.onColorChanged}) : super(key: key);
+  ExampleOne({Key? key, this.onColorChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class ExampleOne extends StatelessWidget {
 
       scaffold: ScaffoldDrawer(innerDrawerKey: _innerDrawerKey),
 
-      onDragUpdate: (double value, InnerDrawerDirection direction) {
+      onDragUpdate: (double value, InnerDrawerDirection? direction) {
         //BAD: DO NOT DO THIS, take it as a general example.
         // We working to find a solution.
         //drawerNotifier.setSwipeOffset(value);
